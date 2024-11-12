@@ -45,7 +45,7 @@ cache.clear();
 
 ```javascript
 import express from 'express';
-import MemoryCache from 'node-cacheup';
+const MemoryCache = require('node-cacheup');
 
 const app = express();
 const cache = new MemoryCache();
