@@ -7,16 +7,14 @@ class MemoryCache {
   }
 
   set(key, value, ttl = this.defaultTTL, options = {}) {
-    // Gera uma chave aleatória se 'key' não for fornecida
+    if (!key) throw new Error("Key is required");
+
     if (!value) {
       value = Utils.generateValue(options);
     }
 
     const expiresAt = Date.now() + ttl;
     this.cache.set(key, { value, expiresAt });
-
-    // Remove automaticamente após o TTL expirar
-    setTimeout(() => this.cache.delete(key), ttl);
 
     return key; // Retorna a chave, útil se foi gerada aleatoriamente
   }
@@ -37,10 +35,10 @@ class MemoryCache {
       return null;
     }
 
-    return Object.keys[key] = {
+    return {
       value: entry.value,
-      expiresAt: Utils.formatDate(entry.expiresAt), // Converte para ISO para legibilidade
-    }
+      expiresAt: Utils.formatDate(entry.expiresAt),
+    };
   }
 
   delete(key) {
@@ -52,9 +50,9 @@ class MemoryCache {
   }
 
   /**
-* Retorna todas as chaves e valores ativos no cache.
-* @returns {Object} - Um objeto com todas as chaves e valores válidos (não expirados).
-*/
+   * Retorna todas as chaves e valores ativos no cache.
+   * @returns {Object} - Um objeto com todas as chaves e valores válidos (não expirados).
+   */
   getAll() {
     const result = {};
     const now = Date.now();
@@ -63,10 +61,10 @@ class MemoryCache {
       if (entry.expiresAt > now) {
         result[key] = {
           value: entry.value,
-          expiresAt: Utils.formatDate(entry.expiresAt), // Converte para ISO para legibilidade
+          expiresAt: Utils.formatDate(entry.expiresAt),
         };
       } else {
-        this.cache.delete(key); // Remove as expiradas
+        this.cache.delete(key);
       }
     }
 
