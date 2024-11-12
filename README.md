@@ -85,7 +85,10 @@ app.listen(3000, () => console.log('Server is running on port 3000'));
 
 This project is licensed under the MIT License - see the LICENSE file for details. [LICENSE](./LICENSE).
 
+## Contact
++55 (11) 97013-3902
 
+mateus.camaccho@gmail.com
 
 # node-CacheUp (Português)
 
@@ -226,3 +229,13 @@ Os testes garantem a correta funcionalidade dos métodos `set`, `get`, `delete`,
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Para mais detalhes, consulte o arquivo [LICENSE](./LICENSE).
+
+### Buy me a coffee 🍵
+
+pix: mateus.camaccho@gmail.com
+
+## Contato
+
++55 (11) 97013-3902
+
+mateus.camaccho@gmail.com
