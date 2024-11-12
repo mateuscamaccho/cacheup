@@ -1,0 +1,18 @@
+{
+  "name": "node-cacheup",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/cache.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "node-cacheup": "^0.0.1"
+  }
+}
