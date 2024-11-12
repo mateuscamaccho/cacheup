@@ -4,6 +4,16 @@ class MemoryCache {
   constructor(options = {}) {
     this.defaultTTL = options.ttl || 60000;
     this.cache = new Map();
+
+    // Executa uma limpeza periódica
+    setInterval(() => {
+      const now = Date.now();
+      for (const [key, entry] of this.cache.entries()) {
+        if (entry.expiresAt < now) {
+          this.cache.delete(key);
+        }
+      }
+    }, options.cleanupInterval || 60000); // Intervalo de 1 minuto por padrão
   }
 
   set(key, value, ttl = this.defaultTTL, options = {}) {
@@ -13,10 +23,12 @@ class MemoryCache {
       value = Utils.generateValue(options);
     }
 
+    ttl = ttl ?? this.defaultTTL;
+
     const expiresAt = Date.now() + ttl;
     this.cache.set(key, { value, expiresAt });
 
-    return key; // Retorna a chave, útil se foi gerada aleatoriamente
+    return key;
   }
 
   get(key) {
