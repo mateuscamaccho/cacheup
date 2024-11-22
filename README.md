@@ -30,10 +30,6 @@ cache.set('myKey', 'myValue', 5000); // Expires in 5 seconds
 const value = cache.get('myKey');
 console.log(value); // Outputs: 'myValue' (if not expired)
 
-// Check if a key exists
-const exists = cache.has('myKey');
-console.log(exists); // Outputs: true or false
-
 // Delete a specific key
 cache.delete('myKey');
 
